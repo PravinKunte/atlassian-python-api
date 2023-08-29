@@ -12,6 +12,8 @@ log = logging.getLogger(__name__)
 
 class Bitbucket(BitbucketBase):
     def __init__(self, url, *args, **kwargs):
+        if kwargs is None:
+            kwargs = {}
         if "cloud" not in kwargs and ("bitbucket.org" in url):
             kwargs["cloud"] = True
         if "api_version" not in kwargs:
